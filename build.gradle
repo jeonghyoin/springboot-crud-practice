@@ -1,0 +1,47 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//Spring
+	compile('org.springframework.boot:spring-boot-starter-web')
+	//compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	
+	//security
+	compile("org.springframework.boot:spring-boot-starter-security")
+	compile 'org.springframework.security:spring-security-web:4.1.2.RELEASE'
+	compile 'org.springframework.security:spring-security-config:4.1.2.RELEASE'
+	compile 'org.springframework.security:spring-security-taglibs:4.0.4.RELEASE'
+	
+	//jsp
+	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
+	compile('javax.servlet:jstl:1.2')
+	
+	//Database
+	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
+	compile('org.springframework:spring-jdbc')
+	
+	//mybatis
+	compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '1.1.1'
+	compile group: 'org.mybatis', name: 'mybatis-typehandlers-jsr310', version: '1.0.1'
+}
